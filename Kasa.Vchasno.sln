@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kasa.Vchasno.Client", "Kasa.Vchasno.Client\Kasa.Vchasno.Client.csproj", "{FC87827F-953C-4740-963B-CB01B1F4C152}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kasa.Vchasno.Client.Tests", "Kasa.Vchasno.Client.Tests\Kasa.Vchasno.Client.Tests.csproj", "{2F1141E2-11AE-4CB5-9FE1-8C2A4EB4C722}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC87827F-953C-4740-963B-CB01B1F4C152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC87827F-953C-4740-963B-CB01B1F4C152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC87827F-953C-4740-963B-CB01B1F4C152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC87827F-953C-4740-963B-CB01B1F4C152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1141E2-11AE-4CB5-9FE1-8C2A4EB4C722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1141E2-11AE-4CB5-9FE1-8C2A4EB4C722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1141E2-11AE-4CB5-9FE1-8C2A4EB4C722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1141E2-11AE-4CB5-9FE1-8C2A4EB4C722}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C7E7D84-8308-46AA-85EF-F688024A5A2E}
+	EndGlobalSection
+EndGlobal
