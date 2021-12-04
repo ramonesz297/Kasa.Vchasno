@@ -32,7 +32,7 @@ jobs:
         run: dotnet test
 
       - name: pack
-        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out
+        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out -p:PackageVersion=1.0.${{ github.run_number }} 
       
       - name: publush
         run: dotnet nuget push ./out/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_ACCESS_TOKEN}} --skip-duplicate
