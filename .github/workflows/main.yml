@@ -26,5 +26,5 @@ jobs:
           dotnet-version: 6.0.100
       
       - name: Build
-        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client -c Release -o out 
+        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out 
      
