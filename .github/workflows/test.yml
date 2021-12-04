@@ -26,3 +26,4 @@ jobs:
             name: test run
             path: out/*.trx    
             reporter: dotnet-trx
+            fail-on-error: 'true'

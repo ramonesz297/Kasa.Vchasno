@@ -19,11 +19,22 @@ jobs:
           dotnet-version: 6.0.100
       
       - name: tests
-        run: dotnet test -c Release
+        run: dotnet test -c Release --logger trx --results-directory out-tests
+      
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+            name: test run
+            path: out-tests/*.trx    
+            reporter: dotnet-trx
+            fail-on-error: 'true'
 
       - name: pack
-        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out -p:PackageVersion=1.0.${{ github.run_number }} 
+        if: success()
+        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out -p:PackageVersion=1.0.${{ github.run_number }} --include-symbols --include-source
       
       - name: publush
+        if: success()
         run: dotnet nuget push ./out/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_ACCESS_TOKEN}} --skip-duplicate
      
