@@ -6,6 +6,7 @@
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<PackageId>Kasa.Vchasno.Client</PackageId>
 		<Authors>ramonesz297</Authors>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageDescription>Http client for the Vchasno programing fiscal register</PackageDescription>
 		<RepositoryUrl>https://github.com/ramonesz297/Kasa.Vchasno</RepositoryUrl>
 	</PropertyGroup>
