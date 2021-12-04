@@ -17,6 +17,9 @@ jobs:
   publish:
     name: build, pack & publish
     runs-on: ubuntu-latest
+    environment:
+      name: main
+      url: 
     steps:
       - uses: actions/checkout@v2
 
@@ -25,6 +28,12 @@ jobs:
         with:
           dotnet-version: 6.0.100
       
-      - name: Build
-        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out 
+      - name: tests
+        run: dotnet test
+
+      - name: pack
+        run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out
+      
+      - name: publush
+        run: dotnet nuget push ./out/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_ACCESS_TOKEN}} --skip-duplicate
      
