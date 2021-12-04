@@ -4,16 +4,20 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<PackageId>Kasa.Vchasno.Client</PackageId>
+		<Authors>ramonesz297</Authors>
+		<PackageDescription>Http client for the Vchasno programing fiscal register</PackageDescription>
+		<RepositoryUrl>https://github.com/ramonesz297/Kasa.Vchasno</RepositoryUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-	  <PackageReference Include="System.Net.Http" Version="4.3.4" />
-	  <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
-	  <PackageReference Include="System.Text.Json" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+		<PackageReference Include="System.Text.Json" Version="6.0.0" />
 	</ItemGroup>
 
 </Project>
