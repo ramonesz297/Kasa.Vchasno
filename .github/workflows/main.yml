@@ -1,20 +1,15 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Publish
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-
+  
 jobs:
   publish:
     name: build, pack & publish
     runs-on: ubuntu-latest
     environment:
       name: main
-      url: 
     steps:
       - uses: actions/checkout@v2
 
@@ -24,7 +19,7 @@ jobs:
           dotnet-version: 6.0.100
       
       - name: tests
-        run: dotnet test
+        run: dotnet test -c Release
 
       - name: pack
         run: dotnet pack ./Kasa.Vchasno.Client/Kasa.Vchasno.Client.csproj -c Release -o out -p:PackageVersion=1.0.${{ github.run_number }} 
