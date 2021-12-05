@@ -39,7 +39,7 @@ namespace Vchasno.Client.Tests
 
             var client = scope.ServiceProvider.GetRequiredService<IVchasnoHttpClient>();
 
-            var response = await client.SendAsync<BaseInfoResponse>(new Request("test"));
+            var response = await client.ExecuteAsync<BaseInfoResponse>(new Request("test"));
 
             Assert.NotNull(response);
         }
