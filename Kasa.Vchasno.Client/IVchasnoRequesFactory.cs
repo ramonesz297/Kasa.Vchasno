@@ -9,8 +9,8 @@ namespace Kasa.Vchasno.Client
         Request OpenShift(string tag = "");
         Request Return(Receipt receipt, string tag = "");
         Request Sale(Receipt receipt, string tag = "");
-        Request ServiceIn(Cash receipt, string tag = "");
-        Request ServiceOut(Cash receipt, string tag = "");
+        Request ServiceIn(ServiceCash receipt, string tag = "");
+        Request ServiceOut(ServiceCash receipt, string tag = "");
         Request XReport(string tag = "");
         Request ZReport(string tag = "");
     }
@@ -42,7 +42,7 @@ namespace Kasa.Vchasno.Client
         }
 
 
-        public Request ServiceOut(Cash receipt, string tag = "")
+        public Request ServiceOut(ServiceCash receipt, string tag = "")
         {
             var r = BuildBaseRequest(tag);
 
@@ -55,7 +55,7 @@ namespace Kasa.Vchasno.Client
         }
 
 
-        public Request ServiceIn(Cash receipt, string tag = "")
+        public Request ServiceIn(ServiceCash receipt, string tag = "")
         {
             var r = BuildBaseRequest(tag);
 
