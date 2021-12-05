@@ -9,7 +9,7 @@ namespace Kasa.Vchasno.Client.Models.Requests
         [JsonPropertyName("sum")]
         public PriceValue Sum { get; set; }
 
-        [JsonPropertyName("sum")]
+        [JsonPropertyName("round")]
         public PriceValue Round { get; set; }
 
         [JsonPropertyName("comment_up")]
