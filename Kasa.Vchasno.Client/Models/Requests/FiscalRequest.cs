@@ -21,7 +21,7 @@ namespace Kasa.Vchasno.Client.Models.Requests
         public Receipt Receipt { get; set; }
 
         [JsonPropertyName("cash")]
-        public Cash Cash { get; set; }
+        public ServiceCash Cash { get; set; }
 
         [JsonPropertyName("n_from")]
         public int? NumberFrom { get; set; }
