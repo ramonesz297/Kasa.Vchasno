@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace Kasa.Vchasno.Client.Models.Requests
 {
-
     public class FiscalRequest
     {
         public FiscalRequest(FiscalRequestTaskTypes task)
@@ -17,7 +16,7 @@ namespace Kasa.Vchasno.Client.Models.Requests
         [JsonPropertyName("cashier")]
         public string Cashier { get; set; }
 
-        [JsonPropertyName("cashier")]
+        [JsonPropertyName("receipt")]
         public Receipt Receipt { get; set; }
 
         [JsonPropertyName("cash")]

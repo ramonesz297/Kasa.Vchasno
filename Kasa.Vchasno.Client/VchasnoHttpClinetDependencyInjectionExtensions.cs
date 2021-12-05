@@ -10,7 +10,7 @@ namespace Kasa.Vchasno.Client
         {
             services.AddOptions().AddOptions<VchasnoOptions>().Validate((options) =>
             {
-                return !string.IsNullOrWhiteSpace(options.Token);
+                return !string.IsNullOrWhiteSpace(options.Token) && !string.IsNullOrWhiteSpace(options.Device);
             });
 
             services.Configure<VchasnoOptions>(configuration);
@@ -26,7 +26,7 @@ namespace Kasa.Vchasno.Client
         {
             services.AddOptions().AddOptions<VchasnoOptions>().Validate((options) =>
             {
-                return !string.IsNullOrWhiteSpace(options.Token);
+                return !string.IsNullOrWhiteSpace(options.Token) && !string.IsNullOrWhiteSpace(options.Device);
             });
 
             services.Configure(configureOptions);

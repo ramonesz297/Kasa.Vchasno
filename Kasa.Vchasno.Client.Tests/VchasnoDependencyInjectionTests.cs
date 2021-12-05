@@ -45,15 +45,19 @@ namespace Vchasno.Client.Tests
         }
 
         [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        [InlineData(null)]
-        public void Should_throw_error_when_options_not_configured_using_configurations_section(string token)
+        [InlineData("", "device")]
+        [InlineData(" ", "device")]
+        [InlineData(null, "device")]
+        [InlineData("token", " ")]
+        [InlineData("token", "")]
+        [InlineData("token", null)]
+        public void Should_throw_error_when_options_not_configured_using_configurations_section(string token, string device)
         {
             var configurationRoot = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string>()
                 {
-                     {"Token", token }
+                     {"Token", token },
+                     {"Device", device }
                 }).Build();
 
             var serviceDescriptors = new ServiceCollection();
@@ -66,16 +70,21 @@ namespace Vchasno.Client.Tests
         }
 
         [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        [InlineData(null)]
-        public void Should_throw_error_when_options_not_configured_using_configurations_action(string token)
+        [InlineData("", "device")]
+        [InlineData(" ", "device")]
+        [InlineData(null, "device")]
+        [InlineData("token", " ")]
+        [InlineData("token", "")]
+        [InlineData("token", null)]
+
+        public void Should_throw_error_when_options_not_configured_using_configurations_action(string token, string device)
         {
             var serviceDescriptors = new ServiceCollection();
 
             serviceDescriptors.AddVchasnoIntegration(new System.Uri("http://localhost:3939"), (o) =>
             {
                 o.Token = token;
+                o.Device = device;
             });
 
             using var sp = serviceDescriptors.BuildServiceProvider();
@@ -89,7 +98,8 @@ namespace Vchasno.Client.Tests
             var configurationRoot = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string>()
                 {
-                    {"Token","token" }
+                    {"Token","token" },
+                    {"Device","device" }
                 }).Build();
 
             var serviceDescriptors = new ServiceCollection();
@@ -109,6 +119,7 @@ namespace Vchasno.Client.Tests
             serviceDescriptors.AddVchasnoIntegration(new System.Uri("http://localhost:3939"), (o) =>
             {
                 o.Token = "token";
+                o.Device = "device";
             });
 
             using var sp = serviceDescriptors.BuildServiceProvider();
@@ -122,7 +133,8 @@ namespace Vchasno.Client.Tests
             var serviceDescriptors = new ServiceCollection();
             var source = new Dictionary<string, string>()
               {
-                    {"Token","token" }
+                    {"Token","token" },
+                    {"Device", "device" }
               };
 
             var configurationRoot = new ConfigurationBuilder()
@@ -139,12 +151,14 @@ namespace Vchasno.Client.Tests
             }
 
             configurationRoot.Providers.ElementAt(0).Set("Token", "token2");
+            configurationRoot.Providers.ElementAt(0).Set("Device", "device2");
             configurationRoot.Reload();
 
             using (var scope = sp.CreateScope())
             {
                 var o = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<VchasnoOptions>>().Value;
                 Assert.Equal("token2", o.Token);
+                Assert.Equal("device2", o.Device);
             }
         }
     }
