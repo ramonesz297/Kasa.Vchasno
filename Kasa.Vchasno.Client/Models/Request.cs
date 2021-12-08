@@ -5,40 +5,16 @@ using Kasa.Vchasno.Client.Models.Requests;
 
 namespace Kasa.Vchasno.Client.Models
 {
-    public class Request
+    public class Request : BaseRequest
     {
-        public Request(string token, RequestTypes type = RequestTypes.Fiscal, string source = null, string device = null, string tag = "")
+        public Request(string token, string device, RequestTypes type = RequestTypes.Fiscal, string source = null, string tag = "")
+            : base(token, device, source, tag)
         {
-            Token = token;
             Type = type;
-            Source = source;
-            Device = device;
-            Tag = tag;
         }
-
-        /// <summary>
-        /// Version of the json scheme
-        /// </summary>
-        [JsonPropertyName("ver")]
-        public SchemaVersions Version { get; set; } = SchemaVersions.Version_6;
-
-        /// <summary>
-        /// Source of the request
-        /// </summary>
-        [JsonPropertyName("source")]
-        public string Source { get; set; }
-
-        [JsonPropertyName("device")]
-        public string Device { get; set; }
-
-        [JsonPropertyName("tag")]
-        public string Tag { get; set; }
 
         [JsonPropertyName("dt")]
         public DateTimeOffset CratedAt { get; set; } = DateTimeOffset.Now;
-
-        [JsonPropertyName("token")]
-        public string Token { get; set; }
 
         /// <summary>
         /// need_pf_img

@@ -42,7 +42,5 @@ namespace Kasa.Vchasno.Client.Models.Responses
 
         [JsonPropertyName("pf_del_custom")]
         public bool? DelCustomPrintingForm { get; set; }
-
-
     }
 }

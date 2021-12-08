@@ -7,7 +7,6 @@ namespace Kasa.Vchasno.Client.Models.Responses
         [JsonPropertyName("docno")]
         public string DocNumber { get; set; }
 
-
         [JsonPropertyName("isprint")]
         public PrintingResults IsPrint { get; set; }
 
