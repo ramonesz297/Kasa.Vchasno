@@ -7,7 +7,8 @@ namespace Kasa.Vchasno.Client
 {
     public interface IVchasnoHttpClient
     {
-        Task<Response<T>> ExecuteAsync<T>(Request request, CancellationToken cancellationToken = default) where T : BaseInfoResponse;
+        Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(Request request, CancellationToken cancellationToken = default) where TResponseInfo : BaseInfoResponse;
+        Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(BaseRequest request, CancellationToken cancellationToken = default) where TResponseInfo : BaseInfoResponse;
         Task<CommonSettings> GetSettingsAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -17,19 +17,33 @@ namespace Kasa.Vchasno.Client
             _optionsProvider = optionsProvider;
         }
 
-        public virtual async Task<Response<T>> ExecuteAsync<T>(Request request, CancellationToken cancellationToken = default) where T : BaseInfoResponse
+        protected virtual async Task<Response<TInfoResponse>> InternalExecuteAsync<TRequest, TInfoResponse>(TRequest request, CancellationToken cancellationToken = default)
+            where TInfoResponse : BaseInfoResponse
+            where TRequest : BaseRequest
         {
             using (var response = await _client.PostAsJsonAsync("dm/execute", request, _optionsProvider.Options, cancellationToken).ConfigureAwait(false))
             {
-                return await response.Content.ReadFromJsonAsync<Response<T>>(_optionsProvider.Options, cancellationToken).ConfigureAwait(false);
+                return await response.Content.ReadFromJsonAsync<Response<TInfoResponse>>(_optionsProvider.Options, cancellationToken).ConfigureAwait(false);
             }
+        }
+
+        public virtual async Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(Request request, CancellationToken cancellationToken = default)
+            where TResponseInfo : BaseInfoResponse
+        {
+            return await InternalExecuteAsync<Request, TResponseInfo>(request).ConfigureAwait(false);
+        }
+
+        public virtual async Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(BaseRequest request, CancellationToken cancellationToken = default)
+            where TResponseInfo : BaseInfoResponse
+        {
+            return await InternalExecuteAsync<BaseRequest, TResponseInfo>(request).ConfigureAwait(false);
         }
 
         public async Task<CommonSettings> GetSettingsAsync(CancellationToken cancellationToken = default)
         {
-            var response = await _client.GetAsync("/dm/vchasno-kasa/api/v1/settings", cancellationToken);
+            var response = await _client.GetAsync("/dm/vchasno-kasa/api/v1/settings", cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<CommonSettings>(_optionsProvider.Options, cancellationToken);
+            return await response.Content.ReadFromJsonAsync<CommonSettings>(_optionsProvider.Options, cancellationToken).ConfigureAwait(false);
         }
     }
 }

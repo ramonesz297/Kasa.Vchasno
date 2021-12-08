@@ -29,7 +29,6 @@ namespace Kasa.Vchasno.Client.Models.Requests
         [JsonPropertyName("change")]
         public decimal Change { get; set; }
 
-
         /// <summary>
         /// Name of the payment system (for terminal payments) 
         /// </summary>
@@ -42,9 +41,6 @@ namespace Kasa.Vchasno.Client.Models.Requests
         [JsonPropertyName("rrn")]
         public string Rrn { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
         [JsonPropertyName("cardmask")]
         public string Cardmask { get; set; }
 
