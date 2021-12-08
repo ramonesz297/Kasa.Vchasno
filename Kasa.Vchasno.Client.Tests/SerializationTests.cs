@@ -128,7 +128,7 @@ namespace Vchasno.Client.Tests
             mockHttp.When($"{url}/dm/execute").Respond("application/json", JsonSerializer.Serialize(data, jsonOptions.Options));
             var t = await client.ExecuteAsync<BaseInfoResponse>(request);
 
-            var response = await client.ExecuteAsync<BaseInfoResponse>(new Request("test","device"));
+            var response = await client.ExecuteAsync<BaseInfoResponse>(new Request("test", "device"));
 
             Assert.NotNull(response);
         }

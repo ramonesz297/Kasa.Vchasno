@@ -17,7 +17,7 @@ namespace Kasa.Vchasno.Client
             _optionsProvider = optionsProvider;
         }
 
-        protected virtual async Task<Response<TInfoResponse>> ExecuteAsync<TRequest, TInfoResponse>(TRequest request, CancellationToken cancellationToken = default)
+        protected virtual async Task<Response<TInfoResponse>> InternalExecuteAsync<TRequest, TInfoResponse>(TRequest request, CancellationToken cancellationToken = default)
             where TInfoResponse : BaseInfoResponse
             where TRequest : BaseRequest
         {
@@ -30,13 +30,13 @@ namespace Kasa.Vchasno.Client
         public virtual async Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(Request request, CancellationToken cancellationToken = default)
             where TResponseInfo : BaseInfoResponse
         {
-            return await ExecuteAsync<TResponseInfo>(request).ConfigureAwait(false);
+            return await InternalExecuteAsync<Request, TResponseInfo>(request).ConfigureAwait(false);
         }
 
         public virtual async Task<Response<TResponseInfo>> ExecuteAsync<TResponseInfo>(BaseRequest request, CancellationToken cancellationToken = default)
             where TResponseInfo : BaseInfoResponse
         {
-            return await ExecuteAsync<TResponseInfo>(request).ConfigureAwait(false);
+            return await InternalExecuteAsync<BaseRequest, TResponseInfo>(request).ConfigureAwait(false);
         }
 
         public async Task<CommonSettings> GetSettingsAsync(CancellationToken cancellationToken = default)
