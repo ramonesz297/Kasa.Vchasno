@@ -30,6 +30,7 @@ namespace Kasa.Vchasno.Client.Models
         [JsonPropertyName("task")]
         public FiscalRequestTaskTypes? Task { get; set; }
 
+        [JsonPropertyName("info")]
         public T Info { get; set; }
 
         [JsonPropertyName("pf_text")]
