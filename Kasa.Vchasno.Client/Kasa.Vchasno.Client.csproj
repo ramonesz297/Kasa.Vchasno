@@ -9,6 +9,23 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageDescription>Http client for the Vchasno programing fiscal register</PackageDescription>
 		<RepositoryUrl>https://github.com/ramonesz297/Kasa.Vchasno</RepositoryUrl>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+	  <NoWarn>1701;1702;CS1591;</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+	  <NoWarn>1701;1702;CS1591;</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+	  <NoWarn>1701;1702;CS1591;</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+	  <NoWarn>1701;1702;CS1591;</NoWarn>
 	</PropertyGroup>
 
 
