@@ -29,7 +29,7 @@ namespace Vchasno.Client.Tests
         }
 
         [Fact]
-        public void Should_write_data_in_given_format()
+        public void Should_write_data_in_default_format()
         {
             var payload = new DateTimeOffsetTestClass()
             {
@@ -43,7 +43,7 @@ namespace Vchasno.Client.Tests
         }
 
         [Fact]
-        public void Should_read_data_in_given_format()
+        public void Should_read_data_in_default_format()
         {
             var time = new DateTimeOffset(new DateTime(2021, 12, 2, 12, 3, 4, 095, DateTimeKind.Local));
 
@@ -56,7 +56,20 @@ namespace Vchasno.Client.Tests
         }
 
         [Fact]
-        public void Should_write_nullable_data_in_given_format()
+        public void Should_read_data_in_additional_format()
+        {
+            var time = new DateTimeOffset(new DateTime(2021, 12, 11, 13, 22, 1, DateTimeKind.Local));
+
+            const string payload = "{\"Value\":\"11-12-2021 13:22:01\"}";
+
+            var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
+            Assert.NotNull(result);
+            Assert.Null(result!.NullableValue);
+            Assert.Equal(time, result.Value);
+        }
+
+        [Fact]
+        public void Should_write_nullable_data_in_defaul_format()
         {
             var payload = new DateTimeOffsetTestClass()
             {
@@ -68,11 +81,23 @@ namespace Vchasno.Client.Tests
             Assert.Equal("{\"NullableValue\":\"20211202120304095\"}", result);
         }
         [Fact]
-        public void Should_read_nullable_data_in_given_format()
+        public void Should_read_nullable_data_in_default_format()
         {
             var time = new DateTimeOffset(new DateTime(2021, 12, 2, 12, 3, 4, 095, DateTimeKind.Local));
 
             const string payload = "{\"NullableValue\":\"20211202120304095\"}";
+
+            var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
+            Assert.NotNull(result);
+            Assert.Equal(time, result!.NullableValue);
+        }
+
+        [Fact]
+        public void Should_read_nullable_data_in_additional_format()
+        {
+            var time = new DateTimeOffset(new DateTime(2021, 12, 11, 13, 22, 1, DateTimeKind.Local));
+
+            const string payload = "{\"NullableValue\":\"11-12-2021 13:22:01\"}";
 
             var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
             Assert.NotNull(result);
