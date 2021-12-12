@@ -16,7 +16,7 @@ namespace Kasa.Vchasno.Client.Models
         /// <param name="device">name of fiscal register (required)</param>
         /// <param name="source"></param>
         /// <param name="tag"></param>
-        public BaseRequest(string token, string device, string source = null, string tag = null)
+        public BaseRequest(string token, string device, string? source = null, string? tag = null)
         {
             Token = token;
             Device = device;
@@ -40,7 +40,7 @@ namespace Kasa.Vchasno.Client.Models
         /// Source of the request
         /// </summary>
         [JsonPropertyName("source")]
-        public string Source { get; set; }
+        public string? Source { get; set; }
 
 
         /// <summary>
@@ -54,6 +54,6 @@ namespace Kasa.Vchasno.Client.Models
         /// as for transaction mode 
         /// </summary>
         [JsonPropertyName("tag")]
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Kasa.Vchasno.Client.Models;
+﻿using Kasa.Vchasno.Client.Models;
 using Kasa.Vchasno.Client.Models.Requests;
 
 namespace Kasa.Vchasno.Client
@@ -14,5 +13,7 @@ namespace Kasa.Vchasno.Client
         Request ServiceOut(ServiceCash receipt, string tag = "");
         Request XReport(string tag = "");
         Request ZReport(string tag = "");
+        Request FiscalRegisterStatus(string tag = "");
+        Request Status(string tag = "");
     }
 }

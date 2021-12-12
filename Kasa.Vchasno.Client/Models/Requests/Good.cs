@@ -9,43 +9,43 @@ namespace Kasa.Vchasno.Client.Models.Requests
         /// Good code
         /// </summary>
         [JsonPropertyName("code")]
-        public string Code { get; set; } 
+        public string? Code { get; set; } 
 
         /// <summary>
         /// Bar code of the good
         /// </summary>
         [JsonPropertyName("code1")]
-        public string Code1 { get; set; }
+        public string? Code1 { get; set; }
 
         /// <summary>
         /// Additional good code (max length = 10)
         /// Ukrainian classification of goods for foreign economic activity
         /// </summary>
         [JsonPropertyName("code2")]
-        public string Code2 { get; set; }
+        public string? Code2 { get; set; }
 
         /// <summary>
         /// Additional good code
         /// State classifier of products and services
         /// </summary>
         [JsonPropertyName("code3")]
-        public string Code3 { get; set; }
+        public string? Code3 { get; set; }
 
         /// <summary>
         /// Excise stamp code of the goods
         /// </summary>
         [JsonPropertyName("code_a")]
-        public string CodeA { get; set; }
+        public string? CodeA { get; set; }
 
         /// <summary>
         /// Excise stamp codes of the goods
         /// if good has many codes
         /// </summary>
         [JsonPropertyName("code_aa")]
-        public string[] CodeAA { get; set; }
+        public string[]? CodeAA { get; set; }
 
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Quantity of good (will be rounded to 3 digits)
@@ -82,6 +82,6 @@ namespace Kasa.Vchasno.Client.Models.Requests
         public int TaxGroup { get; set; } = DefaultVchasnoTaxGroups.Without_VAT;
 
         [JsonPropertyName("comment")]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
     }
 }

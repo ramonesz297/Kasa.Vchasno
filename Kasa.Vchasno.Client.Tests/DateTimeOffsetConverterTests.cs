@@ -23,7 +23,8 @@ namespace Vchasno.Client.Tests
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
                 Converters =
                 {
-                    new DateTimeOffsetJsonConverter()
+                    new DateTimeOffsetJsonConverter(),
+                    new NullableDateTimeOffsetConverter()
                 }
             };
         }
@@ -102,6 +103,32 @@ namespace Vchasno.Client.Tests
             var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
             Assert.NotNull(result);
             Assert.Equal(time, result!.NullableValue);
+        }
+
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("0")]
+        public void Should_read_vchasno_constant_as_null(string vchasnoConstant)
+        {
+            string payload = $"{{\"NullableValue\":\"{vchasnoConstant}\"}}";
+
+            var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
+            Assert.NotNull(result);
+            Assert.Null(result!.NullableValue);
+        }
+
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("0")]
+        public void Should_read_vchasno_constant_as_min_date(string vchasnoConstant)
+        {
+            string payload = $"{{\"Value\":\"{vchasnoConstant}\"}}";
+
+            var result = JsonSerializer.Deserialize<DateTimeOffsetTestClass>(payload, Create());
+            Assert.NotNull(result);
+            Assert.Equal(DateTimeOffset.MinValue, result!.Value);
         }
     }
 }

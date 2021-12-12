@@ -13,10 +13,10 @@ namespace Kasa.Vchasno.Client.Models.Requests
         public PriceValue Round { get; set; }
 
         [JsonPropertyName("comment_up")]
-        public string CommentUp { get; set; }
+        public string? CommentUp { get; set; }
 
         [JsonPropertyName("comment_down")]
-        public string CommentDown { get; set; }
+        public string? CommentDown { get; set; }
 
         [JsonPropertyName("rows")]
         public List<Good> Rows { get; set; } = new List<Good>();

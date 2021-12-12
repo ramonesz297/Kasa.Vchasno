@@ -12,6 +12,7 @@ namespace Kasa.Vchasno.Client
             Converters =
             {
                 new DateTimeOffsetJsonConverter(),
+                new NullableDateTimeOffsetConverter(),
                 new PriceValueJsonConverter(),
                 new CountValueJsonConverter()
             }

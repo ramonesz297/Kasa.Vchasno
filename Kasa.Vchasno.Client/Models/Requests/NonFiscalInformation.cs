@@ -8,7 +8,7 @@ namespace Kasa.Vchasno.Client.Models.Requests
         /// Free text user information
         /// </summary>
         [JsonPropertyName("t")]
-        public string T { get; set; }
+        public string? T { get; set; }
 
         [JsonPropertyName("qr_type")]
         public QrTypes QrType { get; set; }

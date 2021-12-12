@@ -24,7 +24,7 @@ namespace Kasa.Vchasno.Client.Models.Requests
         public string Currency { get; set; } = "грн";
 
         [JsonPropertyName("comment")]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [JsonPropertyName("change")]
         public decimal Change { get; set; }
@@ -33,24 +33,24 @@ namespace Kasa.Vchasno.Client.Models.Requests
         /// Name of the payment system (for terminal payments) 
         /// </summary>
         [JsonPropertyName("paysys")]
-        public string Paysys { get; set; }
+        public string? Paysys { get; set; }
 
         /// <summary>
         /// Transaction Code of the payment system  (for terminal payments) 
         /// </summary>
         [JsonPropertyName("rrn")]
-        public string Rrn { get; set; }
+        public string? Rrn { get; set; }
 
         [JsonPropertyName("cardmask")]
-        public string Cardmask { get; set; }
+        public string? Cardmask { get; set; }
 
         [JsonPropertyName("term_id")]
-        public string TermId { get; set; }
+        public string? TermId { get; set; }
 
         [JsonPropertyName("bank_id")]
-        public string BankId { get; set; }
+        public string? BankId { get; set; }
 
         [JsonPropertyName("auth_code")]
-        public string AuthCode { get; set; }
+        public string? AuthCode { get; set; }
     }
 }

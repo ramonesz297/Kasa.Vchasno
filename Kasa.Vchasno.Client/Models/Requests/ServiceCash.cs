@@ -18,9 +18,9 @@ namespace Kasa.Vchasno.Client.Models.Requests
         public PriceValue Sum { get; }
 
         [JsonPropertyName("comment_up")]
-        public string CommentUp { get; set; }
+        public string? CommentUp { get; set; }
 
         [JsonPropertyName("comment_down")]
-        public string CommentDown { get; set; }
+        public string? CommentDown { get; set; }
     }
 }
