@@ -15,7 +15,7 @@ namespace Vchasno.Client.Tests
 {
     public class SerializationTests
     {
-        static class TestData
+        private static class TestData
         {
             public static IEnumerable<object[]> GetRequests()
             {
@@ -126,11 +126,10 @@ namespace Vchasno.Client.Tests
             var jsonOptions = sp.GetRequiredService<IJsonSerializerOptionsProvider>();
 
             mockHttp.When($"{url}/dm/execute").Respond("application/json", JsonSerializer.Serialize(data, jsonOptions.Options));
-            var t = await client.ExecuteAsync<BaseInfoResponse>(request);
 
-            var response = await client.ExecuteAsync<BaseInfoResponse>(new Request("test", "device"));
+            var result = await client.CoreExecuteAsync<BaseInfoResponse>(request);
 
-            Assert.NotNull(response);
+            Assert.NotNull(result);
         }
     }
 }

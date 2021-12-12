@@ -7,7 +7,7 @@ namespace Kasa.Vchasno.Client.Models
 {
     public class Request : BaseRequest
     {
-        public Request(string token, string device, RequestTypes type = RequestTypes.Fiscal, string source = null, string tag = "")
+        public Request(string token, string device, RequestTypes type = RequestTypes.Fiscal, string? source = null, string tag = "")
             : base(token, device, source, tag)
         {
             Type = type;
@@ -40,6 +40,6 @@ namespace Kasa.Vchasno.Client.Models
 
 
         [JsonPropertyName("fiscal")]
-        public FiscalRequest Fiscal { get; set; }
+        public FiscalRequest? Fiscal { get; set; }
     }
 }

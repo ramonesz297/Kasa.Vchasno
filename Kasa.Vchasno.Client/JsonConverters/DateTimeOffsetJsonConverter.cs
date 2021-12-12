@@ -5,31 +5,25 @@ using System.Text.Json.Serialization;
 
 namespace Kasa.Vchasno.Client.JsonConverters
 {
+
     public class DateTimeOffsetJsonConverter : JsonConverter<DateTimeOffset>
     {
-        private const string _format = "yyyyMMddHHmmssFFF";
-        private const string _additionalFormat = "dd-MM-yyyy HH:mm:ss";
         public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var input = reader.GetString();
 
-            if (DateTimeOffset.TryParseExact(input, _format, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out var result))
+            return input switch
             {
-                return result;
-            }
-            else if (DateTimeOffset.TryParseExact(input, _additionalFormat, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return DateTimeOffset.MinValue;
-            }
+                "" => DateTimeOffset.MinValue,
+                "0" => DateTimeOffset.MinValue,
+                null => DateTimeOffset.MinValue,
+                _ => VchasnoDateTimeOffsetReader.Parse(input)
+            };
         }
 
         public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(value.ToLocalTime().ToString(_format, CultureInfo.InvariantCulture));
+            writer.WriteStringValue(value.ToLocalTime().ToString(VchasnoDateTimeOffsetReader.Format, CultureInfo.InvariantCulture));
         }
     }
 }

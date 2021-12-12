@@ -26,7 +26,11 @@ namespace Vchasno.Client.Tests
 
             var serviceDescriptors = new ServiceCollection();
 
-            serviceDescriptors.AddVchasnoHttpClient(new System.Uri(url))
+            serviceDescriptors.AddVchasnoIntegration(new System.Uri(url), (o) =>
+            {
+                o.Token = "test";
+                o.Device = "device";
+            })
                 .ConfigurePrimaryHttpMessageHandler(() => mockHttp);
 
             using var sp = serviceDescriptors.BuildServiceProvider();
@@ -39,7 +43,7 @@ namespace Vchasno.Client.Tests
 
             var client = scope.ServiceProvider.GetRequiredService<IVchasnoHttpClient>();
 
-            var response = await client.ExecuteAsync<BaseInfoResponse>(new Request("test", "device"));
+            var response = await client.CoreExecuteAsync<BaseInfoResponse>(new Request("test", "device"));
 
             Assert.NotNull(response);
         }
